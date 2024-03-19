@@ -8,8 +8,8 @@ const requestLogger = (request, response, next) => {
   console.log('---')
   next()
 }
-
 app.use([express.json(), cors(), requestLogger])
+app.use(express.static('dist'))
 
 let notes = [
   {

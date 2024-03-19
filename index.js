@@ -8,10 +8,8 @@ const requestLogger = (request, response, next) => {
   console.log('---')
   next()
 }
-const unknownEndpoint = (request, response) => {
-  response.status(404).send({ error: 'unknown endpoint' })
-}
-app.use([express.json(), cors(), requestLogger, unknownEndpoint])
+
+app.use([express.json(), cors(), requestLogger])
 
 let notes = [
   {
@@ -80,6 +78,13 @@ app.post('/api/notes', (request, response) => {
 
   response.json(note)
 })
+
+const unknownEndpoint = (request, response, next) => {
+  response.status(404).send({ error: 'unknown endpoint' })
+  next()
+}
+
+app.use(unknownEndpoint)
 
 const PORT = process.env.PORT || 3001
 

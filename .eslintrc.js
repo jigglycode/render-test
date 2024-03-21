@@ -24,7 +24,7 @@ module.exports = {
   'plugins': [
     '@stylistic/js'
   ],
-  'extends': 'eslint:recommended',
+  "extends": "airbnb",
   'rules': {
     '@stylistic/js/indent': [
       'error',
@@ -50,5 +50,6 @@ module.exports = {
     'arrow-spacing': [
       'error', { 'before': true, 'after': true }
     ],
+    'no-console': 0,
   }
 }

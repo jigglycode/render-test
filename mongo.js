@@ -27,7 +27,7 @@ const Note = mongoose.model('Note', noteSchema)
 //   console.log('note saved!')
 // })
 
-Note.find({important: true }).then(result => {
+Note.find({ important: true }).then(result => {
   result.forEach(note => console.log(note))
   mongoose.connection.close()
 })

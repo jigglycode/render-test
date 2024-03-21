@@ -5,10 +5,7 @@ if (process.argv.length<3) {
   process.exit(1)
 }
 
-const password = process.argv[2]
-
-const url =
-  `mongodb+srv://jigglycode:${password}@cluster0.hq2mo6y.mongodb.net/noteApp?retryWrites=true&w=majority`
+const url = process.env.MONGODB_URI
 
 mongoose.set('strictQuery',false)
 
@@ -31,8 +28,6 @@ const Note = mongoose.model('Note', noteSchema)
 // })
 
 Note.find({important: true }).then(result => {
-  result.forEach(note => {
-    console.log(note)
-  })
+  result.forEach(note => console.log(note))
   mongoose.connection.close()
 })

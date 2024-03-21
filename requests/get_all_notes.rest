@@ -8,3 +8,13 @@ content-type: application/json
     "content": "sample eehe",
     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
+
+###
+
+POST https://render-test-xzkr.onrender.com/api/notes HTTP/1.1
+content-type: application/json
+
+{
+    "content": "lol",
+    "important": false
+}

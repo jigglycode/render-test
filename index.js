@@ -31,6 +31,12 @@ app.use([express.static('dist'), cors(), express.json(), requestLogger])
 
 const Note = require('./models/note')
 
+app.get('/api/notes', (request, response) => {
+  Note.find({}).then(notes => {
+    response.json(notes)
+  })
+})
+
 app.post('/api/notes', (request, response) => {
   const body = request.body
 

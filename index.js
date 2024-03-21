@@ -50,7 +50,6 @@ app.post('/api/notes', (request, response, next) => {
     .catch(e => next(e))
 })
 
-
 app.get('/api/notes/:id', (request, response, next) => {
   Note.findById(request.params.id)
     .then(note => {

@@ -67,6 +67,7 @@ app.post('/api/notes', (request, response) => {
   if (body.content === undefined) {
     return response.status(400).json({ error: 'content missing' })
   }
+})
 
 app.get('/api/notes/:id', (request, response, next) => {
   Note.findById(request.params.id)
@@ -109,7 +110,11 @@ app.put('/api/notes/:id', (request, response, next) => {
     important: body.important,
   }
 
-  Note.findByIdAndUpdate(request.params.id, note, { new: true })
+  Note.findByIdAndUpdate(
+    request.params.id,
+    { content, important },
+    { new: true, runValidators: true, context: 'query' }
+  )
     .then(updatedNote => {
       response.json(updatedNote)
     })
